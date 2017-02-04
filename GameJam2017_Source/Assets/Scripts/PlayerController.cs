@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     private bool buttonX = false;
     private bool buttonY = false;
     List<GameObject> currentResources = new List<GameObject>();
+    public GameObject footPrintPrefab;
+    public Transform leftFootPos;
+    public Transform rightFootPos;
 
     void Update()
     {
@@ -116,6 +119,16 @@ public class PlayerController : MonoBehaviour
                 currentResources.Remove(col.gameObject);
             }
         }
+    }
+
+    public void SpawnLeftFootPrint()
+    {
+        GameObject clone = Instantiate(footPrintPrefab, leftFootPos.position, Quaternion.identity) as GameObject;
+    }
+
+    public void SpawnRightFootPrint()
+    {
+        GameObject clone = Instantiate(footPrintPrefab, rightFootPos.position, Quaternion.identity) as GameObject;
     }
 
 
