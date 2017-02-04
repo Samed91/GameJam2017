@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public float movementSpeed = 3f;
     [Range(0, 5)]
     public float lookSmooth = 3f;
-    private float speed;
+    public float speed;
     public bool enableMovement = false;
     private bool buttonA = false;
     private bool buttonB = false;
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
             return;
 
         speed = Mathf.Abs(Input.GetAxis("Vertical") + Input.GetAxis("Horizontal"));
-        if (speed > 0.1f)
+        if (speed > 0f)
         {
             Quaternion newLookRotation = Quaternion.Euler(0, (Mathf.Atan2(-Input.GetAxis("Vertical"), Input.GetAxis("Horizontal")) * 180 / Mathf.PI) + 90, 0);
             transform.rotation = Quaternion.Slerp(transform.rotation, newLookRotation, lookSmooth);
