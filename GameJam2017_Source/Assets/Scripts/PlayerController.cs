@@ -63,9 +63,15 @@ public class PlayerController : MonoBehaviour
     void UpdateStates()
     {
         if (currentResources.Count > 0)
+        {
             playerState = PlayerStates.CanPickUp;
+            FindObjectOfType<HUDControl>().SetPickUp(true);
+        }
         else
+        {
             playerState = PlayerStates.None;
+            FindObjectOfType<HUDControl>().SetPickUp(false);
+        }
     }
 
     void PickUpClosestObject()
