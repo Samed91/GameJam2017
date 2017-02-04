@@ -2,22 +2,57 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PlayerStates {None, CanPickUp,CanInteract,CanTalk}
+
 public class PlayerController : MonoBehaviour
 {
-
+    public PlayerStates playerState = PlayerStates.None;
+    public Animator anim;
     [Range(0, 5)]
     public float movementSpeed = 3f;
     [Range(0, 5)]
-    public float lookSpeed = 3f;
+    public float lookSmooth = 3f;
+    private float speed;
+    public bool enableMovement = false;
+    private bool buttonA = false;
+    private bool buttonB = false;
+    private bool buttonX = false;
+    private bool buttonY = false;
 
     void Update()
     {
-        float h = Input.GetAxis("Horizontal") * (lookSpeed * Time.deltaTime);
-        float v = Input.GetAxis("Vertical") * (lookSpeed * Time.deltaTime);
+        UpdateInputs();
+        UpdateMovement();
+        UpdateAnims();
+    }
 
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, Mathf.Atan2(h, v) * Mathf.Rad2Deg, transform.eulerAngles.z);
-        transform.Translate(transform.forward * (movementSpeed * Time.deltaTime));
+    void UpdateInputs()
+    {
+        buttonA = Input.GetButton("ButtonA");
+        buttonB = Input.GetButton("ButtonB");
+        buttonX = Input.GetButton("ButtonX");
+        buttonY = Input.GetButton("ButtonY");
+    }
 
+    void UpdateMovement()
+    {
+        if (!enableMovement)
+            return;
+
+        speed = Mathf.Abs(Input.GetAxis("Vertical") + Input.GetAxis("Horizontal"));
+        if (speed > 0.1f)
+        {
+            Quaternion newLookRotation = Quaternion.Euler(0, (Mathf.Atan2(-Input.GetAxis("Vertical"), Input.GetAxis("Horizontal")) * 180 / Mathf.PI) + 90, 0);
+            transform.rotation = Quaternion.Slerp(transform.rotation, newLookRotation, lookSmooth);
+            transform.position += transform.forward * Time.deltaTime * movementSpeed;
+        }
+    }
+
+    void UpdateAnims()
+    {
+        anim.SetFloat("Speed", speed);
+        if (buttonX)
+            anim.Play("PickUp");
     }
 
 }
