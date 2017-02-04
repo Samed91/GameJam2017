@@ -82,7 +82,10 @@ public class PlayerController : MonoBehaviour
                 minDist = dist;
             }
         }
-        //TODO: Add item to inventory;
+        Resource r = new Resource();
+        r.itemName = closest.GetComponent<Resource>().itemName;
+        r.itemID = closest.GetComponent<Resource>().itemID;
+        FindObjectOfType<Inventory>().AddItem(r);
         currentResources.Remove(closest);
         Destroy(closest.gameObject);
     }
