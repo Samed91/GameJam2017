@@ -6,17 +6,17 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
 
-    public List<Resource> items = new List<Resource>();
+    public List<Item> items = new List<Item>();
     string myPath = "/Items";
 
-    public void AddItem(Resource r)
+    public void AddItem(Item r)
     {
         GameObject temp = Resources.Load("Items/" + r.itemName) as GameObject;
-        items.Add(temp.GetComponent<Resource>());
+        items.Add(temp.GetComponent<Resource>().itemData);
         Debug.Log("<color=purple>Added: " + r.itemName + " To Inventory</color>");
     }
 
-    public void RemoveItem(Resource r)
+    public void RemoveItem(Item r)
     {
         items.Remove(r);
         Debug.Log("<color=red>Removed: " + r.itemName + " To Inventory</color>");

@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Resource : MonoBehaviour
+[System.Serializable]
+public class Item
 {
     public string itemName = "";
     public int itemID = 0;
+}
 
+public class Resource : MonoBehaviour
+{
+    public Item itemData;
 }

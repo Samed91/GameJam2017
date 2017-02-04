@@ -91,9 +91,9 @@ public class PlayerController : MonoBehaviour
                 minDist = dist;
             }
         }
-        Resource r = new Resource();
-        r.itemName = closest.GetComponent<Resource>().itemName;
-        r.itemID = closest.GetComponent<Resource>().itemID;
+        Item r = new Item();
+        r.itemName = closest.GetComponent<Resource>().itemData.itemName;
+        r.itemID = closest.GetComponent<Resource>().itemData.itemID;
         FindObjectOfType<Inventory>().AddItem(r);
         currentResources.Remove(closest);
         Destroy(closest.gameObject);
