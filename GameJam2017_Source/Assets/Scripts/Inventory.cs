@@ -21,8 +21,16 @@ public class Inventory : MonoBehaviour
 
     public void RemoveItem(Item r)
     {
-        items.Remove(r);
-        Debug.Log("<color=red>Removed: " + r.itemName + " To Inventory</color>");
+        foreach (Item i in items)
+        {
+            if (r.itemName == i.itemName)
+            {
+                items.Remove(i);
+                Debug.Log("<color=red>Removed: " + r.itemName + " To Inventory</color>");
+                RefreshOneOfEach();
+                return;
+            }
+        }
     }
 
     public void RefreshOneOfEach()

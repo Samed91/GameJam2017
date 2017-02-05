@@ -25,7 +25,7 @@ public class RecipeBook : MonoBehaviour
             {
                 for (int j = 0; j < items.Count; ++j)
                 {
-                    if (items[j] == r.ingredients[i])
+                    if (items[j].itemName == r.ingredients[i].itemName)
                     {
                         hasIngredients = true;
                         break;

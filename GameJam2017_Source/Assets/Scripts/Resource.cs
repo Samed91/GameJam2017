@@ -12,4 +12,5 @@ public class Item
 public class Resource : MonoBehaviour
 {
     public Item itemData;
+    public Sprite icon;
 }
