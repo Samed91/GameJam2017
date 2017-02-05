@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 7cda2c6e4884b88478dc257978f9184a
+timeCreated: 1486325613
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: ImperatorBronzeSmallCaps
+  fontNames:
+  - ImperatorBronzeSmallCaps
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
