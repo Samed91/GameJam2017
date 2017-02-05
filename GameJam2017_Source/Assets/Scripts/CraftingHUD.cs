@@ -9,6 +9,11 @@ public class CraftingHUD : MonoBehaviour
     public Transform listParent;
     public GameObject itemButton;
     public List<GameObject> itemListButtons = new List<GameObject>();
+    public RectTransform scrollRectTransform;
+    public RectTransform contentPanel;
+    RectTransform selectedRectTransform;
+    GameObject lastSelected;
+
 
     void Start()
     {
@@ -32,9 +37,4 @@ public class CraftingHUD : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(itemListButtons[0], new BaseEventData(EventSystem.current));
     }
 
-
-    void Update()
-    {
-
-    }
 }

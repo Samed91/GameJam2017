@@ -21,6 +21,7 @@ public class GameControl : MonoBehaviour
         {
             gameData = Load<GameData>(Application.persistentDataPath + "/gameData.dat");
             inventory.items = gameData.inventory;
+            inventory.RefreshOneOfEach();
         }
         else
         {
